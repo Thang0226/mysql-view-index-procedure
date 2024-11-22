@@ -68,19 +68,16 @@ drop view products_view;
 
 -- Stored Procedures
 delimiter //
-
 create procedure showAllProducts()
 begin
 	select * from products;
 end //
-
 delimiter ;
 
 call showAllProducts();
 
 
 delimiter //
-
 create procedure addProduct(
 	in in_productCode varchar(20), 
     in in_productName varchar(50), 
@@ -93,14 +90,12 @@ begin
 	insert into Products(productCode, productName, productPrice, productAmount, productDescription, productStatus) values
 		(in_productCode, in_productName, in_productPrice, in_productAmount, in_productDescription, in_productStatus);
 end //
-
 delimiter ;
 
 call addProduct('P011', 'Smartwatch Garmin Venu 2', 349.99, 25, 'Fitness-focused smartwatch with AMOLED display.', 1);
 
 
 delimiter //
-
 create procedure updateProductByID(
 	in p_id int,
     in p_productCode varchar(20),
@@ -122,7 +117,6 @@ begin
 	where
 		id = p_id;
 end //
-
 delimiter ;
 
 call UpdateProductById(
@@ -137,13 +131,11 @@ call UpdateProductById(
 
 
 delimiter //
-
 create procedure deleteProductByID(in p_id int)
 begin
 	delete from products
     where id = p_id;
 end //
-
 delimiter ;
 
 call deleteProductByID(5);
